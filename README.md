@@ -1,35 +1,54 @@
-# jq-playground-website-ca
+# jq Playground — Website
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+Sito web promozionale e documentazione per l'estensione VS Code [jq Playground](https://marketplace.visualstudio.com/items?itemName=davidnussio.vscode-jq-playground).
 
-## Built with v0
+Costruito con [Next.js](https://nextjs.org) 16, [Tailwind CSS](https://tailwindcss.com) 4, e [shadcn/ui](https://ui.shadcn.com).
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## Struttura
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_kA0L1uWtZFeceTf4uAw47ODtsPiK)
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```
+app/            → Layout e pagina principale (App Router)
+components/     → Sezioni del sito (Hero, Features, Documentation, ecc.)
+components/ui/  → Componenti shadcn/ui
+styles/         → CSS globali
+public/         → Asset statici (icone, placeholder)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sviluppo locale
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Installa le dipendenze
+npm install
 
-## Learn More
+# Avvia il server di sviluppo
+npm run dev
+```
 
-To learn more, take a look at the following resources:
+Il sito sarà disponibile su [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+## Build e deploy
 
-<a href="https://v0.app/chat/api/kiro/clone/davidnussio/jq-playground-website-ca" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+```bash
+# Build di produzione
+npm run build
+
+# Avvia il server di produzione
+npm start
+```
+
+Il progetto è collegato a [v0](https://v0.app) e ogni merge su `main` viene deployato automaticamente.
+
+## Requisiti
+
+- Node.js 18+
+- npm / yarn / pnpm
+
+## Link utili
+
+- [Estensione su VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=davidnussio.vscode-jq-playground)
+- [Repository GitHub dell'estensione](https://github.com/davidnussio/vscode-jq-playground)
+- [Progetto v0](https://v0.app/chat/projects/prj_kA0L1uWtZFeceTf4uAw47ODtsPiK)
+
+## Licenza
+
+MIT
