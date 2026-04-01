@@ -96,8 +96,8 @@ const sections = [
               VS Code Marketplace
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
-            <div className="mt-4 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4">
-              <p className="text-sm text-amber-700 dark:text-amber-400">
+            <div className="mt-4 rounded-lg border border-blue-500/20 bg-blue-500/5 p-4">
+              <p className="text-sm text-blue-700 dark:text-blue-400">
                 <strong>Dependency:</strong> The extension requires <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">jq-syntax-highlighting</code> which is installed automatically.
               </p>
             </div>
@@ -154,9 +154,6 @@ const sections = [
           <>
             <p className="leading-relaxed text-muted-foreground">
               Create a new file with the <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.jqpg</code> extension, or open any file and change the Language Mode to <strong>&quot;jqpg&quot;</strong> (JQ PlayGround) from the status bar.
-            </p>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Files with <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">.jq</code> extension are also supported.
             </p>
           </>
         ),

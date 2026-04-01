@@ -54,7 +54,7 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="px-6 py-24 lg:px-8">
+    <section id="features" className="px-6 py-24 lg:px-8" aria-label="Features">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">

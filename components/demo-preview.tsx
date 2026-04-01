@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 
 const notebookCells = [
   {
@@ -25,13 +25,6 @@ const notebookCells = [
   },
 ]
 
-const jsonPanel = [
-  "{",
-  '  "name": "JSON",',
-  '  "good": true',
-  "}",
-]
-
 const tabs = [
   { name: "Untitled-1", icon: null },
   { name: "jq . Untitled-2", icon: "jq", active: true },
@@ -41,18 +34,72 @@ const tabs = [
   { name: "Untitled-7", icon: "obj", color: "text-yellow-400" },
 ]
 
+function CellInput({ input }: { input: string }) {
+  if (input.includes('"name"')) {
+    return (
+      <>
+        <span className="text-yellow-300">{"{"}</span>
+        <span className="text-pink-400">{'"name"'}</span>
+        <span className="text-white">:</span>
+        <span className="text-green-400">{'"JSON"'}</span>
+        <span className="text-white">, </span>
+        <span className="text-pink-400">{'"good"'}</span>
+        <span className="text-white">:</span>
+        <span className="text-cyan-300">true</span>
+        <span className="text-yellow-300">{"}"}</span>
+        <span className="text-white">, </span>
+        <span className="text-yellow-300">{"{"}</span>
+        <span className="text-pink-400">{'"name"'}</span>
+        <span className="text-white">:</span>
+        <span className="text-green-400">{'"XML"'}</span>
+        <span className="text-white">, </span>
+        <span className="text-pink-400">{'"good"'}</span>
+        <span className="text-white">:</span>
+        <span className="text-cyan-300">false</span>
+        <span className="text-yellow-300">{"}"}</span>
+      </>
+    )
+  }
+  if (input.includes('"a"')) {
+    return (
+      <>
+        <span className="text-green-400">{'"a"'}</span>
+        <span className="text-white">,</span>
+        <span className="text-green-400">{'"b"'}</span>
+        <span className="text-white">,</span>
+        <span className="text-green-400">{'"c"'}</span>
+        <span className="text-white">,</span>
+        <span className="text-green-400">{'"d"'}</span>
+        <span className="text-white">,</span>
+        <span className="text-green-400">{'"e"'}</span>
+      </>
+    )
+  }
+  return (
+    <>
+      <span className="text-orange-400">1</span>
+      <span className="text-white">,</span>
+      <span className="text-orange-400">2</span>
+      <span className="text-white">,</span>
+      <span className="text-orange-400">3</span>
+    </>
+  )
+}
+
 export function DemoPreview() {
   const [activeCell, setActiveCell] = useState(0)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveCell((prev) => (prev + 1) % notebookCells.length)
-    }, 3000)
-    return () => clearInterval(timer)
+  const advance = useCallback(() => {
+    setActiveCell((prev) => (prev + 1) % notebookCells.length)
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(advance, 3000)
+    return () => clearInterval(timer)
+  }, [advance])
+
   return (
-    <section className="px-6 py-24 lg:px-8">
+    <section className="px-6 py-24 lg:px-8" aria-label="Interactive demo preview">
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl text-balance">
@@ -63,10 +110,10 @@ export function DemoPreview() {
           </p>
         </div>
 
-        <div className="mt-16 overflow-hidden rounded-xl border border-border shadow-2xl">
+        <div className="mt-16 overflow-hidden rounded-xl border border-border shadow-2xl" role="img" aria-label="VS Code editor showing jq Playground extension with interactive notebook cells executing jq filters on JSON data">
           {/* VS Code title bar */}
           <div className="flex items-center justify-between bg-[#1e1e1e] px-4 py-2">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" aria-hidden="true">
               <div className="h-3 w-3 rounded-full bg-[#ff5f56]" />
               <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
               <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
@@ -78,7 +125,7 @@ export function DemoPreview() {
           </div>
 
           {/* Tab bar */}
-          <div className="flex overflow-x-auto border-b border-[#2d2d2d] bg-[#252526]">
+          <div className="flex overflow-x-auto border-b border-[#2d2d2d] bg-[#252526]" aria-hidden="true">
             {tabs.map((tab, index) => (
               <div
                 key={index}
@@ -86,18 +133,10 @@ export function DemoPreview() {
                   tab.active ? "bg-[#1e1e1e]" : "bg-[#2d2d2d]"
                 }`}
               >
-                {tab.icon === "jq" && (
-                  <span className="text-cyan-400 text-xs">jq</span>
-                )}
-                {tab.icon === "bool" && (
-                  <span className="text-cyan-400 text-xs">{"{}"}</span>
-                )}
-                {tab.icon === "null" && (
-                  <span className="text-orange-400 text-xs">{"{}"}</span>
-                )}
-                {tab.icon === "obj" && (
-                  <span className="text-yellow-400 text-xs">{"{}"}</span>
-                )}
+                {tab.icon === "jq" && <span className="text-cyan-400 text-xs">jq</span>}
+                {tab.icon === "bool" && <span className="text-cyan-400 text-xs">{"{}"}</span>}
+                {tab.icon === "null" && <span className="text-orange-400 text-xs">{"{}"}</span>}
+                {tab.icon === "obj" && <span className="text-yellow-400 text-xs">{"{}"}</span>}
                 <span className={`font-mono text-xs ${tab.active ? "text-white" : "text-neutral-400"}`}>
                   {tab.name}
                 </span>
@@ -112,11 +151,9 @@ export function DemoPreview() {
             <div className="flex-1 border-r border-[#2d2d2d]">
               <div className="flex">
                 {/* Line numbers */}
-                <div className="flex flex-col bg-[#1e1e1e] px-2 py-4 text-right font-mono text-xs text-neutral-600 select-none">
+                <div className="flex flex-col bg-[#1e1e1e] px-2 py-4 text-right font-mono text-xs text-neutral-600 select-none" aria-hidden="true">
                   {[70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83].map((num) => (
-                    <div key={num} className="leading-6">
-                      {num}
-                    </div>
+                    <div key={num} className="leading-6">{num}</div>
                   ))}
                 </div>
 
@@ -125,11 +162,10 @@ export function DemoPreview() {
                   {notebookCells.map((cell, index) => (
                     <div
                       key={index}
-                      className={`transition-all duration-500 ${
+                      className={`transition-colors duration-500 ${
                         activeCell === index ? "bg-[#264f78]/30" : ""
                       }`}
                     >
-                      {/* Action buttons */}
                       <div className="flex items-center gap-1 leading-6 px-2">
                         <span className="text-yellow-400">{"⚡"}</span>
                         <span className="text-neutral-400 text-xs">console</span>
@@ -140,67 +176,17 @@ export function DemoPreview() {
                         <span className="text-purple-400">{"✦"}</span>
                         <span className="text-neutral-400 text-xs">Explain</span>
                       </div>
-                      
-                      {/* Filter */}
                       <div className="leading-6 px-2">
                         <span className="text-cyan-400">{cell.filter}</span>
                       </div>
-                      
-                      {/* Input */}
                       <div className="leading-6 px-2">
                         <span className="text-yellow-300">[</span>
-                        {cell.input.includes('"name"') ? (
-                          <>
-                            <span className="text-yellow-300">{"{"}</span>
-                            <span className="text-pink-400">{'"name"'}</span>
-                            <span className="text-white">:</span>
-                            <span className="text-green-400">{'"JSON"'}</span>
-                            <span className="text-white">, </span>
-                            <span className="text-pink-400">{'"good"'}</span>
-                            <span className="text-white">:</span>
-                            <span className="text-cyan-300">true</span>
-                            <span className="text-yellow-300">{"}"}</span>
-                            <span className="text-white">, </span>
-                            <span className="text-yellow-300">{"{"}</span>
-                            <span className="text-pink-400">{'"name"'}</span>
-                            <span className="text-white">:</span>
-                            <span className="text-green-400">{'"XML"'}</span>
-                            <span className="text-white">, </span>
-                            <span className="text-pink-400">{'"good"'}</span>
-                            <span className="text-white">:</span>
-                            <span className="text-cyan-300">false</span>
-                            <span className="text-yellow-300">{"}"}</span>
-                          </>
-                        ) : cell.input.includes('"a"') ? (
-                          <>
-                            <span className="text-green-400">{'"a"'}</span>
-                            <span className="text-white">,</span>
-                            <span className="text-green-400">{'"b"'}</span>
-                            <span className="text-white">,</span>
-                            <span className="text-green-400">{'"c"'}</span>
-                            <span className="text-white">,</span>
-                            <span className="text-green-400">{'"d"'}</span>
-                            <span className="text-white">,</span>
-                            <span className="text-green-400">{'"e"'}</span>
-                          </>
-                        ) : (
-                          <>
-                            <span className="text-orange-400">1</span>
-                            <span className="text-white">,</span>
-                            <span className="text-orange-400">2</span>
-                            <span className="text-white">,</span>
-                            <span className="text-orange-400">3</span>
-                          </>
-                        )}
+                        <CellInput input={cell.input} />
                         <span className="text-yellow-300">]</span>
                       </div>
-                      
-                      {/* Output */}
                       <div className="leading-6 px-2">
                         <span className="text-neutral-500 italic">{cell.output}</span>
                       </div>
-                      
-                      {/* Empty line */}
                       <div className="leading-6">&nbsp;</div>
                     </div>
                   ))}
@@ -209,38 +195,18 @@ export function DemoPreview() {
             </div>
 
             {/* Right panel - JSON input */}
-            <div className="w-72 hidden md:block">
+            <div className="w-72 hidden md:block" aria-hidden="true">
               <div className="flex">
-                {/* Line numbers */}
                 <div className="flex flex-col bg-[#1e1e1e] px-2 py-4 text-right font-mono text-xs text-neutral-600 select-none">
                   {[1, 2, 3, 4, 5].map((num) => (
-                    <div key={num} className="leading-6">
-                      {num}
-                    </div>
+                    <div key={num} className="leading-6">{num}</div>
                   ))}
                 </div>
-
-                {/* JSON content */}
                 <div className="flex-1 py-4 px-2 font-mono text-sm">
-                  <div className="leading-6">
-                    <span className="text-yellow-300 bg-[#264f78]">{"{"}</span>
-                  </div>
-                  <div className="leading-6">
-                    <span className="text-white">{"  "}</span>
-                    <span className="text-pink-400">{'"name"'}</span>
-                    <span className="text-white">: </span>
-                    <span className="text-green-400">{'"JSON"'}</span>
-                    <span className="text-white">,</span>
-                  </div>
-                  <div className="leading-6">
-                    <span className="text-white">{"  "}</span>
-                    <span className="text-pink-400">{'"good"'}</span>
-                    <span className="text-white">: </span>
-                    <span className="text-cyan-300">true</span>
-                  </div>
-                  <div className="leading-6">
-                    <span className="text-yellow-300">{"}"}</span>
-                  </div>
+                  <div className="leading-6"><span className="text-yellow-300 bg-[#264f78]">{"{"}</span></div>
+                  <div className="leading-6"><span className="text-white">{"  "}</span><span className="text-pink-400">{'"name"'}</span><span className="text-white">: </span><span className="text-green-400">{'"JSON"'}</span><span className="text-white">,</span></div>
+                  <div className="leading-6"><span className="text-white">{"  "}</span><span className="text-pink-400">{'"good"'}</span><span className="text-white">: </span><span className="text-cyan-300">true</span></div>
+                  <div className="leading-6"><span className="text-yellow-300">{"}"}</span></div>
                   <div className="leading-6">&nbsp;</div>
                 </div>
               </div>

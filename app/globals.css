@@ -193,3 +193,28 @@ pre {
 code {
   font-family: var(--font-mono);
 }
+
+/* Performance: reduce paint on scroll */
+.sticky {
+  will-change: transform;
+}
+
+/* Prevent CLS from font loading */
+body {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

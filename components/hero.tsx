@@ -4,7 +4,7 @@ import { ExternalLink, Download, Star } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
+    <section className="relative overflow-hidden px-6 py-24 sm:py-32 lg:px-8" aria-label="jq Playground introduction">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 opacity-[0.03]">

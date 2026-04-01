@@ -15,7 +15,7 @@ export function Installation() {
   }
 
   return (
-    <section className="border-y border-border bg-primary px-6 py-24 lg:px-8">
+    <section className="border-y border-border bg-primary px-6 py-24 lg:px-8" aria-label="Installation">
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="font-serif text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
           Ready to get started?
