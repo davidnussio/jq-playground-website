@@ -32,7 +32,7 @@ export function Hero() {
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Create interactive notebooks with the full power of jq filters.
           Work with JSON data from files, URLs, or command line outputs —
-          all within your favorite editor.
+          with a dedicated filter panel, AI assistance, and autocomplete.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

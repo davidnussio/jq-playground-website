@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { cn } from "@/lib/utils"
-import { ChevronRight, ChevronDown, Copy, Check, ExternalLink, Sparkles, Zap, Terminal, FileJson, Globe, Command as CommandIcon, Keyboard, Settings, AlertCircle } from "lucide-react"
+import { ChevronRight, ChevronDown, Copy, Check, ExternalLink, Sparkles, Zap, Terminal, FileJson, Command as CommandIcon, Keyboard, Settings, AlertCircle, LayoutPanelLeft } from "lucide-react"
 
 // Code block component with copy functionality
 function CodeBlock({ children, language = "jq" }: { children: string; language?: string }) {
@@ -73,6 +73,84 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
 }
 
 const sections = [
+  {
+    id: "filter-panel",
+    title: "Filter Panel",
+    icon: LayoutPanelLeft,
+    subsections: [
+      {
+        id: "filter-panel-overview",
+        title: "Overview",
+        content: (
+          <>
+            <div className="mb-4 rounded-lg border border-accent/30 bg-accent/5 p-4">
+              <p className="text-sm font-medium text-accent">
+                New in v5.0.6 — A dedicated webview panel to experiment with jq filters without leaving the editor.
+              </p>
+            </div>
+            <p className="leading-relaxed text-muted-foreground">
+              Run <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">JQPG: Open Playground Panel</code> from the Command Palette, or click the <strong>jq Playground</strong> icon in the Activity Bar to open the filter panel.
+            </p>
+            <img
+              src="https://raw.githubusercontent.com/davidnussio/vscode-jq-playground/master/images/filter-panel.png"
+              alt="Filter panel screenshot showing the file picker, filter textarea, and output area"
+              className="mt-6 rounded-lg border border-border shadow-sm"
+            />
+          </>
+        ),
+      },
+      {
+        id: "filter-panel-pick-files",
+        title: "Pick Files",
+        content: (
+          <>
+            <p className="leading-relaxed text-muted-foreground">
+              Click <strong>📂 Pick File</strong> to select a JSON or JSONL file from open editors or the workspace. Up to 4 files can be loaded at once and displayed as selectable chips.
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Click any file chip to switch the active data source. The panel remembers your selection across sessions.
+            </p>
+          </>
+        ),
+      },
+      {
+        id: "filter-panel-write-run",
+        title: "Write & Run Filters",
+        content: (
+          <>
+            <p className="leading-relaxed text-muted-foreground">
+              Type your jq filter in the text area. The panel provides autocomplete for jq builtins with keyboard navigation.
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Press <Kbd>▶ Run</Kbd> or <Kbd>Cmd+Enter</Kbd> / <Kbd>Ctrl+Enter</Kbd> to execute. The output appears instantly below the filter area.
+            </p>
+          </>
+        ),
+      },
+      {
+        id: "filter-panel-state",
+        title: "Session Persistence",
+        content: (
+          <>
+            <p className="leading-relaxed text-muted-foreground">
+              The panel state — your filter text and selected files — persists across tab switches via <code className="rounded bg-muted px-1 py-0.5 font-mono text-xs">vscode.getState()</code>. You can switch to other tabs and come back without losing your work.
+            </p>
+          </>
+        ),
+      },
+      {
+        id: "filter-panel-errors",
+        title: "Error Feedback",
+        content: (
+          <>
+            <p className="leading-relaxed text-muted-foreground">
+              Execution errors are displayed inline in the output area so you can iterate quickly without switching panels.
+            </p>
+          </>
+        ),
+      },
+    ],
+  },
   {
     id: "getting-started",
     title: "Getting Started",
@@ -325,6 +403,7 @@ Lorem ipsum dolor sit amet`}</CodeBlock>
                 ["JQPG: Run query in editor", "Execute the current jq filter and open results in a new side editor as a JSON document"],
                 ["JQPG: Execute jq filter", "Opens an input box for a jq filter. Uses the active editor content (or selection) as input and creates a temporary playground"],
                 ["JQPG: Create playground from filter", "Asks for a filter, takes the active editor text (or selection), and creates a new .jqpg file in a side editor"],
+                ["JQPG: Open Playground Panel", "Open the interactive filter panel in a webview tab or the sidebar"],
               ]}
             />
           </>

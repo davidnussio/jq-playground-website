@@ -221,7 +221,7 @@ export function DemoPreview() {
             </div>
             <div className="flex items-center gap-4">
               <span>Ln 71, Col 1</span>
-              <span>jq 1.7.1</span>
+              <span>jq 1.8.1</span>
             </div>
           </div>
         </div>

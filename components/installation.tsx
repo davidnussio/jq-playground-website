@@ -67,9 +67,9 @@ export function Installation() {
         </div>
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-primary-foreground/70">
-          <span>Works with VS Code 1.51.0+</span>
+          <span>Works with VS Code 1.100.0+</span>
           <span className="hidden sm:inline">•</span>
-          <span>Requires jq installed on your system</span>
+          <span>jq auto-detected or downloaded for you</span>
         </div>
       </div>
     </section>
