@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Github, ExternalLink } from "lucide-react"
@@ -19,9 +20,7 @@ export function Header() {
       <nav aria-label="Main navigation" className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <div className="flex items-center gap-x-2">
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <span className="font-mono text-sm font-bold">jq</span>
-            </div>
+            <Image src="/icon.png" alt="jq Playground logo" width={36} height={36} className="rounded-lg" />
             <span className="text-lg font-semibold tracking-tight">
               jq Playground
             </span>

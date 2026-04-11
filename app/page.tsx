@@ -14,7 +14,7 @@ const jsonLd = {
   applicationCategory: 'DeveloperApplication',
   operatingSystem: 'Windows, macOS, Linux',
   description: 'Create interactive notebooks with jq filters in VS Code. Work with JSON data from files, URLs, or CLI outputs with autocomplete and syntax highlighting.',
-  url: 'https://jq-playground.dev',
+  url: 'https://jq.dambox.ch',
   downloadUrl: 'https://marketplace.visualstudio.com/items?itemName=davidnussio.vscode-jq-playground',
   softwareVersion: '5.0.7',
   author: {
@@ -43,7 +43,7 @@ const jsonLd = {
     'Interactive filter panel with file picker and live results',
     'Chat participant @jq for Copilot chat',
   ],
-  screenshot: 'https://jq-playground.dev/og-image.png',
+  screenshot: 'https://jq.dambox.ch/og-image.png',
   license: 'https://opensource.org/licenses/MIT',
 }
 

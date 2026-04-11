@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://jq-playground.dev/sitemap.xml',
+    sitemap: 'https://jq.dambox.ch/sitemap.xml',
   }
 }
