@@ -7,7 +7,7 @@
   Brand Colors:
   - Dark Blue: #1C2A3A (primary)
   - Ivory: #F4F1EC (background)
-  - Burgundy: #7A1E2D (accent)
+  - Teal: #3EB5CC (accent)
   
   Typography:
   - Montserrat: body text & buttons
@@ -38,33 +38,33 @@
   --muted: oklch(0.92 0.006 85);
   --muted-foreground: oklch(0.45 0.02 240);
   
-  /* Burgundy accent */
-  --accent: oklch(0.40 0.14 15);
-  --accent-foreground: oklch(0.98 0.004 85);
+  /* Teal accent #3EB5CC */
+  --accent: oklch(0.72 0.11 200);
+  --accent-foreground: oklch(0.15 0.02 240);
   
-  --destructive: oklch(0.40 0.14 15);
+  --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0.004 85);
   
   --border: oklch(0.88 0.008 85);
   --input: oklch(0.88 0.008 85);
-  --ring: oklch(0.40 0.14 15);
+  --ring: oklch(0.72 0.11 200);
   
-  --chart-1: oklch(0.40 0.14 15);
+  --chart-1: oklch(0.72 0.11 200);
   --chart-2: oklch(0.25 0.035 240);
   --chart-3: oklch(0.55 0.10 200);
   --chart-4: oklch(0.65 0.08 85);
-  --chart-5: oklch(0.50 0.12 15);
+  --chart-5: oklch(0.60 0.09 200);
   
   --radius: 0.5rem;
   
   --sidebar: oklch(0.25 0.035 240);
   --sidebar-foreground: oklch(0.957 0.008 85);
-  --sidebar-primary: oklch(0.40 0.14 15);
-  --sidebar-primary-foreground: oklch(0.98 0.004 85);
+  --sidebar-primary: oklch(0.72 0.11 200);
+  --sidebar-primary-foreground: oklch(0.15 0.02 240);
   --sidebar-accent: oklch(0.30 0.03 240);
   --sidebar-accent-foreground: oklch(0.957 0.008 85);
   --sidebar-border: oklch(0.35 0.03 240);
-  --sidebar-ring: oklch(0.40 0.14 15);
+  --sidebar-ring: oklch(0.72 0.11 200);
 }
 
 .dark {
@@ -88,31 +88,31 @@
   --muted: oklch(0.28 0.025 240);
   --muted-foreground: oklch(0.70 0.01 85);
   
-  /* Burgundy accent stays vibrant */
-  --accent: oklch(0.50 0.16 15);
-  --accent-foreground: oklch(0.98 0.004 85);
+  /* Teal accent - brighter for dark mode */
+  --accent: oklch(0.75 0.12 200);
+  --accent-foreground: oklch(0.15 0.02 240);
   
-  --destructive: oklch(0.50 0.16 15);
+  --destructive: oklch(0.55 0.20 25);
   --destructive-foreground: oklch(0.98 0.004 85);
   
   --border: oklch(0.32 0.025 240);
   --input: oklch(0.32 0.025 240);
-  --ring: oklch(0.50 0.16 15);
+  --ring: oklch(0.75 0.12 200);
   
-  --chart-1: oklch(0.55 0.16 15);
+  --chart-1: oklch(0.75 0.12 200);
   --chart-2: oklch(0.75 0.01 85);
   --chart-3: oklch(0.60 0.10 200);
   --chart-4: oklch(0.70 0.08 85);
-  --chart-5: oklch(0.55 0.12 15);
+  --chart-5: oklch(0.65 0.09 200);
   
   --sidebar: oklch(0.15 0.02 240);
   --sidebar-foreground: oklch(0.957 0.008 85);
-  --sidebar-primary: oklch(0.50 0.16 15);
-  --sidebar-primary-foreground: oklch(0.98 0.004 85);
+  --sidebar-primary: oklch(0.75 0.12 200);
+  --sidebar-primary-foreground: oklch(0.15 0.02 240);
   --sidebar-accent: oklch(0.25 0.025 240);
   --sidebar-accent-foreground: oklch(0.957 0.008 85);
   --sidebar-border: oklch(0.28 0.025 240);
-  --sidebar-ring: oklch(0.50 0.16 15);
+  --sidebar-ring: oklch(0.75 0.12 200);
 }
 
 @theme inline {
@@ -177,12 +177,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.40 0.14 15 / 0.3);
+  background: oklch(0.72 0.11 200 / 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.40 0.14 15 / 0.5);
+  background: oklch(0.72 0.11 200 / 0.5);
 }
 
 /* Code block styling */
