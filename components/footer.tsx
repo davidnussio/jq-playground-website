@@ -35,8 +35,17 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A VS Code extension for working with JSON data using jq filters. 
-              Created by David Nussio.
+              A VS Code extension for working with JSON data using jq filters.
+              Created by David Nussio at{" "}
+              <a
+                href="https://dambox.ch"
+                target="_blank"
+                rel="noopener"
+                className="text-foreground underline-offset-4 hover:underline"
+              >
+                dambox Sagl
+              </a>
+              .
             </p>
             <div className="mt-6 flex items-center gap-4">
               <a
@@ -49,6 +58,18 @@ export function Footer() {
                 <span className="sr-only">GitHub</span>
               </a>
             </div>
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              More from dambox:{" "}
+              <a
+                href="https://bizcard.ch"
+                target="_blank"
+                rel="noopener"
+                className="text-foreground underline-offset-4 hover:underline"
+              >
+                bizCARD
+              </a>
+              , digital business cards for companies.
+            </p>
           </div>
 
           {/* Product links */}
