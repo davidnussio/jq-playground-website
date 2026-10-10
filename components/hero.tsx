@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Download, Star } from "lucide-react"
+import Link from "next/link"
+import { Download, Play, Star } from "lucide-react"
+import { EXTENSION_STATS, MARKETPLACE_URL } from "@/lib/site"
 
 export function Hero() {
   return (
@@ -30,15 +32,15 @@ export function Hero() {
         </h1>
 
         <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Create interactive notebooks with the full power of jq filters.
-          Work with JSON data from files, URLs, or command line outputs —
-          with a dedicated filter panel, AI assistance, and autocomplete.
+          A jq editor and notebook for Visual Studio Code: write jq filters in
+          .jqpg files and run them on JSON from files, URLs, or command line
+          outputs — with live results, autocomplete, and AI assistance.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button size="lg" asChild>
             <a
-              href="https://marketplace.visualstudio.com/items?itemName=davidnussio.vscode-jq-playground"
+              href={MARKETPLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="gap-2"
@@ -48,16 +50,16 @@ export function Hero() {
             </a>
           </Button>
           <Button variant="outline" size="lg" asChild>
-            <a href="#documentation" className="gap-2">
-              View Documentation
-              <ExternalLink className="h-4 w-4" />
-            </a>
+            <Link href="/playground" className="gap-2">
+              <Play className="h-4 w-4" />
+              Try jq online
+            </Link>
           </Button>
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold text-foreground">30k+</span>
+            <span className="font-mono text-lg font-semibold text-foreground">{EXTENSION_STATS.installs}</span>
             <span>installs</span>
           </div>
           <div className="h-4 w-px bg-border" />
@@ -67,8 +69,8 @@ export function Hero() {
           </div>
           <div className="h-4 w-px bg-border" />
           <div className="flex items-center gap-2">
-            <span className="font-mono text-lg font-semibold text-foreground">4.7+</span>
-            <span>rating</span>
+            <span className="font-mono text-lg font-semibold text-foreground">{EXTENSION_STATS.ratingValue}</span>
+            <span>rating ({EXTENSION_STATS.ratingCount} reviews)</span>
           </div>
         </div>
       </div>
