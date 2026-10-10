@@ -218,3 +218,8 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Monospace stack for editable code (the brand --font-mono is proportional) */
+@utility font-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+}

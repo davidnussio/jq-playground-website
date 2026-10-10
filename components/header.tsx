@@ -5,11 +5,13 @@ import Image from "next/image"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Github, ExternalLink } from "lucide-react"
+import { GITHUB_URL, MARKETPLACE_URL } from "@/lib/site"
 
 const navigation = [
-  { name: "Features", href: "#features" },
-  { name: "Documentation", href: "#documentation" },
-  { name: "Examples", href: "#examples" },
+  { name: "Online Playground", href: "/playground" },
+  { name: "Features", href: "/#features" },
+  { name: "Documentation", href: "/#documentation" },
+  { name: "FAQ", href: "/#faq" },
 ]
 
 export function Header() {
@@ -42,7 +44,7 @@ export function Header() {
         <div className="hidden md:flex md:items-center md:gap-x-4">
           <Button variant="ghost" size="sm" asChild>
             <a
-              href="https://github.com/davidnussio/vscode-jq-playground"
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="gap-2"
@@ -53,7 +55,7 @@ export function Header() {
           </Button>
           <Button size="sm" asChild>
             <a
-              href="https://marketplace.visualstudio.com/items?itemName=davidnussio.vscode-jq-playground"
+              href={MARKETPLACE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="gap-2"
@@ -67,6 +69,7 @@ export function Header() {
         <div className="flex md:hidden">
           <button
             type="button"
+            aria-expanded={mobileMenuOpen}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
@@ -97,7 +100,7 @@ export function Header() {
             <div className="flex flex-col gap-2 pt-4">
               <Button variant="outline" size="sm" asChild>
                 <a
-                  href="https://github.com/davidnussio/vscode-jq-playground"
+                  href={GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gap-2"
@@ -108,7 +111,7 @@ export function Header() {
               </Button>
               <Button size="sm" asChild>
                 <a
-                  href="https://marketplace.visualstudio.com/items?itemName=davidnussio.vscode-jq-playground"
+                  href={MARKETPLACE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gap-2"

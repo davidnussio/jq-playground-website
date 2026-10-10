@@ -376,7 +376,7 @@ export function ExamplesSection() {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-            Examples
+            jq filter examples
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
             Learn jq through practical examples

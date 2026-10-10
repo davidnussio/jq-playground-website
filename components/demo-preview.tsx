@@ -103,7 +103,7 @@ export function DemoPreview() {
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl text-balance">
-            Notebook-style jq editing
+            Notebook-style jq editing in VS Code
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             Execute jq filters interactively with instant results

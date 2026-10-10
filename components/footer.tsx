@@ -3,14 +3,16 @@ import { Github, ExternalLink } from "lucide-react"
 
 const links = {
   product: [
-    { name: "Features", href: "#features" },
-    { name: "Documentation", href: "#documentation" },
-    { name: "Examples", href: "#examples" },
+    { name: "Online jq Playground", href: "/playground" },
+    { name: "jq Examples", href: "/playground#jq-examples" },
+    { name: "Features", href: "/#features" },
+    { name: "Documentation", href: "/#documentation" },
+    { name: "FAQ", href: "/#faq" },
   ],
   resources: [
-    { name: "jq Manual", href: "https://stedolan.github.io/jq/manual/", external: true },
-    { name: "jq Tutorial", href: "https://stedolan.github.io/jq/tutorial/", external: true },
-    { name: "Changelog", href: "https://github.com/davidnussio/vscode-jq-playground/blob/master/CHANGELOG.md", external: true },
+    { name: "jq Manual", href: "https://jqlang.org/manual/", external: true },
+    { name: "jq Tutorial", href: "https://jqlang.org/tutorial/", external: true },
+    { name: "Changelog", href: "https://github.com/davidnussio/vscode-jq-playground/blob/main/CHANGELOG.md", external: true },
   ],
   community: [
     { name: "GitHub", href: "https://github.com/davidnussio/vscode-jq-playground", external: true },
@@ -140,7 +142,7 @@ export function Footer() {
               href="https://github.com/stedolan"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground underline-offset-4 hover:underline"
+              className="text-foreground underline underline-offset-4"
             >
               Stephen Dolan
             </a>

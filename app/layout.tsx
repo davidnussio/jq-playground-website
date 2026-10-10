@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Montserrat, Space_Grotesk, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SITE_NAME, SITE_URL } from '@/lib/site'
 import './globals.css'
 
 const montserrat = Montserrat({ 
@@ -21,12 +22,8 @@ const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-serif',
   display: 'swap',
-  preload: false,
+  preload: true,
 })
-
-const SITE_URL = 'https://jq.dambox.ch'
-const SITE_TITLE = 'jq Playground for VS Code — Interactive JSON Notebook Editor'
-const SITE_DESCRIPTION = 'Create interactive notebooks with jq filters in VS Code. Work with JSON data from files, URLs, or CLI outputs. Autocomplete, syntax highlighting, 30k+ installs. Free & open source.'
 
 export const viewport: Viewport = {
   themeColor: [
@@ -37,19 +34,15 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+// Page-level title, description, canonical and Open Graph live in each page.
+// og:image and twitter:image come from the opengraph-image / twitter-image files.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_TITLE,
-    template: '%s | jq Playground for VS Code',
+    default: SITE_NAME,
+    template: '%s | jq Playground',
   },
-  description: SITE_DESCRIPTION,
-  keywords: [
-    'jq', 'jq playground', 'VS Code extension', 'JSON', 'JSON editor',
-    'jq filters', 'jq notebook', 'vscode jq', 'JSON query', 'jq tutorial',
-    'JSON transformation', 'jq examples', 'command line JSON', 'API testing',
-    'JSON processing', 'jq autocomplete', 'data transformation',
-  ],
+  applicationName: SITE_NAME,
   authors: [{ name: 'David Nussio', url: 'https://github.com/davidnussio' }],
   creator: 'David Nussio',
   publisher: 'David Nussio',
@@ -64,31 +57,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  alternates: {
-    canonical: SITE_URL,
-  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: SITE_URL,
-    siteName: 'jq Playground for VS Code',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'jq Playground for VS Code — Interactive JSON Notebook Editor',
-        type: 'image/png',
-      },
-    ],
+    siteName: SITE_NAME,
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    images: ['/og-image.png'],
     creator: '@davidnussio',
   },
   icons: {
@@ -122,12 +97,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${montserrat.variable} ${spaceGrotesk.variable} ${playfair.variable}`}>
-      <head>
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className="font-sans antialiased">
         {children}
         <Analytics />

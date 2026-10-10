@@ -94,7 +94,11 @@ const sections = [
             <img
               src="https://raw.githubusercontent.com/davidnussio/vscode-jq-playground/master/images/filter-panel.png"
               alt="Filter panel screenshot showing the file picker, filter textarea, and output area"
-              className="mt-6 rounded-lg border border-border shadow-sm"
+              width={3024}
+              height={1898}
+              loading="lazy"
+              decoding="async"
+              className="mt-6 h-auto w-full rounded-lg border border-border shadow-sm"
             />
           </>
         ),
@@ -851,7 +855,7 @@ export function Documentation() {
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-serif text-3xl font-bold tracking-tight text-balance sm:text-4xl">
-            Documentation
+            jq Playground documentation
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
             Everything you need to master jq Playground
